@@ -24,6 +24,7 @@ module SessionsHelper
     session[:user_id] = nil
     #resets the current user to nil using the current_user= setter method
     self.current_user = nil
+    redirect_to user
   end
 
   #this function returns true if the user I pass to the function is equal the current user signed in
@@ -32,7 +33,7 @@ module SessionsHelper
   end
 
   def deny_access
-    redirect_to signin_path, :notice => "Please sign in to access this page."
+    redirect_to new_path, :notice => "Please sign in to access this page."
   end
 
 end

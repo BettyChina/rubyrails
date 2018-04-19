@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
 
   def destroy
   	sign_out #helper function 
-  	redirect_to signin_path
+  	redirect_to user
   end
 
 end

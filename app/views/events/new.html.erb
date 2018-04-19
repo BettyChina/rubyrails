@@ -1,0 +1,58 @@
+
+<h1></h1>
+<p>Events in your location</p>
+<% if flash[:errors] %>
+	<% flash[:errors].each do |error| %>
+		<p><%= error %></p>
+	<% end %>
+<% end %>
+
+<form action="/create_event" method="post">
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <p>
+            <label for="event_name">Event Name:</label>
+            <input type="text" event_name="event_name" id="name">
+        </p>
+        <p>
+            <label for="event_state">Event State:</label>
+            <select name="state">
+            <option value="NY">NY</option>
+            <option value="NJ">NJ</option>
+            <option value="CA">CA</option>
+        </select>
+        </p>
+        <p>
+            <label for="event_location"> Event Location (optional):</label>
+            <input type="text" event_location="event_location" id="name">
+        </p>
+       
+        <input type="submit"  value="Submit">
+    </form>
+
+    <h2> Here are all users </h2>
+    <% @userall = User.all %>
+   
+    <% @userall.each do |user2| %>
+        <ul >
+        <li >First Name: <%= user2.first_name =%></li>
+        <li >Last Name: <%= user2.last_name =%></li>
+        <li >State: <%= user2.state =%></li>
+       
+    </ul>
+      <% end %>  
+      <h2> Here are all events </h2>
+      <% @eventsall = Event.all %>
+    
+      <% @eventsall.each do |event2| %>
+        <table>
+        <tr> 
+        <ul >
+        <td><li > Event Name: <%= event2.event_name =%></li> </td>
+        <td><li > Event state: <%= event2.state =%></li> </td>
+    </ul>
+    </tr>
+    </table>
+    
+    <% end %>
+    
+    <h2> Here are all events in same state as user </h2>

@@ -18,9 +18,21 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
-  #define strong parameters!
+  def destroy
+    @user = User.find(params[:id])
+    redirect_to new_user_path
+  end
+
+  def update 
+    @userup = Event.find(1)
+    @userup.event_name = "Some Other Name"
+    @userup.event_state = "CA"
+    @userup.save
+    
+end
+
   private
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :email, :password,  :password_confirmation, :location, :state)
     end
 end

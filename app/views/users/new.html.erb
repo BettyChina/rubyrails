@@ -1,5 +1,5 @@
-<h1>Register</h1>
-<p>This where you register!!!</p>
+<h1></h1>
+<p>Registration Page</p>
 <% if flash[:errors] %>
 	<% flash[:errors].each do |error| %>
 		<p><%= error %></p>
@@ -11,5 +11,19 @@
   <%= f.input :email %>
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
+  <%= f.input :location %>
+  <%= f.input :state, collection: ["CA", "NJ", "NY", "WA"] %>
+  <%= f.button :submit %>
+<% end %>
+
+<h1>Sign In</h1>
+
+<% if flash[:error] %>
+	<p><%= flash[:error] %></p>
+<% end %>
+
+<%= simple_form_for(:session, :url => sessions_path) do |f| %>
+  <%= f.input :email %>
+  <%= f.input :password %>
   <%= f.button :submit %>
 <% end %>

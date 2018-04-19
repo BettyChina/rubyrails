@@ -1,6 +1,7 @@
-
+<h1> Page to show events</h1>
 <h1>Welcome <%= @user.first_name %> user id: <%= @user.id %></h1>
 <%= link_to('log off', signout_path) %>
+
 <h2> Here are all users </h2>
 <% @userall = User.all %>
 <% @eventstate = Event.where(state: @user.state) %>
@@ -28,20 +29,3 @@
 <% end %>
 
 <h2> Here are all events in same state as user </h2>
-
-
-<% @eventstate.each do |event2| %>
-    <table>
-    <tr> 
-    <ul >
-    <td><li > <a>Event Name </a>: <%= event2.event_name =%></li></td>
-    <td><li > Event date: <%= event2.event_date =%></li></td> 
-    <td><li > Event location: <%= event2.event_location =%></li></td> 
-    <td><li > Event state: <%= event2.state =%></li></td> 
-    <td><li > Event action: <%= event2.event_date =%></li></td> 
-
-    </ul>
-    </tr>
-    </table>
-
-<% end %>
